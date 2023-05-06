@@ -1,4 +1,4 @@
-package com.example.domain.repo
+package com.example.domain.repository
 
 import com.example.domain.entity.ArticleResponse
 
