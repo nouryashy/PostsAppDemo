@@ -15,5 +15,4 @@ object RepositoryModule {
     fun provideRepository(apiServices: ApiServices): ArticleRepository {
         return ArticleRepositoryImp(apiServices)
     }
-
 }
