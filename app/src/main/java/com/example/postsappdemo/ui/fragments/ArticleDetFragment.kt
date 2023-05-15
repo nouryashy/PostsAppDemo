@@ -5,13 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.postsappdemo.R
+import com.example.postsappdemo.databinding.FragmentArticleDetBinding
+import com.example.postsappdemo.databinding.FragmentArticlesBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 
 class ArticleDetFragment : Fragment() {
 
-
+    private lateinit var fgDetBinding: FragmentArticleDetBinding
+    lateinit var articleTitle: String
+    lateinit var articleDes: String
+    lateinit var articleImg: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,8 +28,20 @@ class ArticleDetFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_article_det, container, false)
+        fgDetBinding = FragmentArticleDetBinding.inflate(inflater, container, false)
+        return fgDetBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val args: ArticleDetFragmentArgs by navArgs()
+        articleTitle = args.articleTitle
+        articleDes = args.articleDes
+        articleImg = args.articleImg
+        fgDetBinding.articleNameTv.text = articleTitle
+        fgDetBinding.articleDesTv.text = articleDes
+        Glide.with(requireContext()).load(articleImg)
+            .into(fgDetBinding.articleIv)
     }
 
 }

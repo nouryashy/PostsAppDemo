@@ -1,5 +1,9 @@
 package com.example.postsappdemo.di
 
+import android.app.Application
+import androidx.room.Room
+import com.example.data.db.ArticlesDao
+import com.example.data.db.ArticlesDatabase
 import com.example.data.remote.ApiServices
 import com.example.postsappdemo.utils.Constants
 import dagger.Module
@@ -14,7 +18,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+object AppModule {
     @Provides
     @Singleton
     fun provideOkHttp(): OkHttpClient {
@@ -35,7 +39,22 @@ object NetworkModule {
     }
 
     @Provides
+    @Singleton
     fun provideApiService(retrofit: Retrofit): ApiServices {
         return retrofit.create(ApiServices::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDatabase(app: Application): ArticlesDatabase {
+        return Room.databaseBuilder(app, ArticlesDatabase::class.java, "article_database")
+            .allowMainThreadQueries()
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDao(database: ArticlesDatabase): ArticlesDao {
+        return database.articleDao()
     }
 }

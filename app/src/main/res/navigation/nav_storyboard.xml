@@ -9,7 +9,7 @@
         android:id="@+id/articlesFragment"
         android:name="com.example.postsappdemo.ui.fragments.ArticlesFragment"
         android:label="fragment_articles"
-        tools:layout="@layout/fragment_articles" >
+        tools:layout="@layout/fragment_articles">
         <action
             android:id="@+id/action_articlesFragment_to_articleDetFragment"
             app:destination="@id/articleDetFragment" />
@@ -18,5 +18,15 @@
         android:id="@+id/articleDetFragment"
         android:name="com.example.postsappdemo.ui.fragments.ArticleDetFragment"
         android:label="fragment_article_det"
-        tools:layout="@layout/fragment_article_det" />
+        tools:layout="@layout/fragment_article_det">
+        <argument
+            android:name="article_title"
+            app:argType="string" />
+        <argument
+            android:name="article_Des"
+            app:argType="string" />
+        <argument
+            android:name="article_img"
+            app:argType="string" />
+    </fragment>
 </navigation>

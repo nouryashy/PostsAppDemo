@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/Kotlien/PostsAppDemo/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProjects/Kotlien/PostsAppDemo/app/src/main/res/layout/article_item_list.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Kotlien/PostsAppDemo/app/src/main/res/layout/article_item_list.xml" value="0.18095238095238095" />
+        <entry key="..\:/AndroidStudioProjects/Kotlien/PostsAppDemo/app/src/main/res/layout/fragment_article_det.xml" value="0.12360688956433637" />
         <entry key="..\:/AndroidStudioProjects/Kotlien/PostsAppDemo/app/src/main/res/layout/fragment_articles.xml" value="0.1" />
       </map>
     </option>

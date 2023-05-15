@@ -2,16 +2,20 @@ package com.example.postsappdemo.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.domain.entity.Article
 import com.example.postsappdemo.databinding.ArticleItemListBinding
 
-class ArticlesAdapter() :
+class ArticlesAdapter( var listener: OnItemClickListener) :
     androidx.recyclerview.widget.ListAdapter<Article, ArticlesAdapter.ViewHolder>(
         CategoryDiffCallback()
     ) {
+    interface OnItemClickListener {
+        fun onClicked(article: Article)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
@@ -23,13 +27,20 @@ class ArticlesAdapter() :
         holder.bind(getItem(position))
     }
 
-    class ViewHolder(private val itemBinding: ArticleItemListBinding) :
+    fun setClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
+
+    inner class ViewHolder(private val itemBinding: ArticleItemListBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(article: Article) {
             itemBinding.articleNameTv.text = article.title
             itemBinding.articleDesTv.text = article.description
             Glide.with(itemBinding.root.context).load(article.urlToImage)
                 .into(itemBinding.articleIv)
+            itemBinding.root.setOnClickListener {
+                listener!!.onClicked(article)
+            }
         }
     }
 
