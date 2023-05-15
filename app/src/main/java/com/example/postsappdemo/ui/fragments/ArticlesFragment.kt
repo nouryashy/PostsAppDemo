@@ -99,7 +99,6 @@ class ArticlesFragment : Fragment() {
                             progressBar.visibility = View.VISIBLE
                             isLoading = true
                         }
-
                     }
                 }
             }
@@ -131,7 +130,6 @@ class ArticlesFragment : Fragment() {
             val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
             val visibleItemCount = layoutManager.childCount
             val totalItemCount = layoutManager.itemCount
-
             val isNotLoadingAndNotLastPage = !isLoading && !isLastPage
             val isAtLastItem = firstVisibleItemPosition + visibleItemCount >= totalItemCount
             val isNotAtBeginning = firstVisibleItemPosition >= 0
